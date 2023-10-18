@@ -1,41 +1,50 @@
 #include "main.h"
+#include <unistd.h>
+#include <stdarg.h>
+
 /**
- * _printf - is a function
- * @format: identifier
- * Return: the length of the string
+ * _printf - a fonction
+ * @format: format
+ * Return: numb of character printed
  */
 int _printf(const char *format, ...)
 {
-	convert_match m[] = {
-		{"%s", printf_string}, {"%c", printf_char},
-		{"%%", printf_37}
-	};
-
 	va_list args;
-	int i = 0, j, len = 0;
+	int count = 0;
 
 	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-
-HERE:
-	while (format[i] != '\0')
+	while (format)
 	{
-		j = 13;
-		while (j >= 0)
+		if (*format != '%')
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+		count += regular_character(*format);
+	}
+		else
+		{
+			format++;
+			if (*format == '\0')
 			{
-				len += m[j].f(args);
-				i = i + 2;
-				goto HERE;
+				va_end(args);
+			return (-1);
 			}
-			j--;
+		switch (*format)
+		{
+			case 'c':
+				count += _char(&args);
+				break;
+			case 's':
+				count += _string(&args);
+				break;
+			case '%':
+				count += _percent();
+				break;
+			default:
+				va_end(args);
+				return (-1);
 		}
-		_putchar(format[i]);
-		len++;
-		i++;
+		}
+		format++;
 	}
 	va_end(args);
-	return (len);
+	return (count);
 }
