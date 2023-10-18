@@ -3,6 +3,12 @@
 #include <string.h>
 #include <stdarg.h>
 
+/**
+ * _string - a fct
+ * @args: a parameter
+ * Return: true
+ */
+
 int _string(va_list *args)
 {
 	char *str = va_arg(*args, char *);
@@ -12,12 +18,11 @@ int _string(va_list *args)
 	{
 		str = "(null)";
 	}
-
 	while (*str)
-		{
-			write(1, str, 1);
-			count++;
-			str++;
-		}
-		return count;
+	{
+		write(1, str, 1);
+		count++;
+		str++;
+	}
+		return (count);
 	}

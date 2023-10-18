@@ -1,7 +1,13 @@
 #include "main.h"
 #include <unistd.h>
-int _percent()
+
+/**
+ * _percent - a funct
+ * Return: true
+ */
+
+int _percent(void)
 {
 	write(1, "%", 1);
-	return 1;
+	return (1);
 }
