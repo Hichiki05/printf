@@ -39,8 +39,9 @@ int _printf(const char *format, ...)
 				count += _percent();
 				break;
 			default:
-				va_end(args);
-				return (-1);
+				write(1, "%", 1);
+				write(1, format, 1);
+				count += 2;
 		}
 		}
 		format++;
