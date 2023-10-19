@@ -14,15 +14,16 @@ int _string(va_list *args)
 	char *str = va_arg(*args, char *);
 	int count = 0;
 
-	if (str == NULL || strcmp(str, "(null)") == 0)
+	if (str == NULL)
 	{
 		str = "(null)";
 	}
-	while (*str)
+	int len = strlen(str);
+
+	for (int i = 0; i < len; i++)
 	{
-		write(1, str, 1);
+		write(1, str + i, 1);
 		count++;
-		str++;
 	}
-		return (count);
-	}
+	return(count);
+}
