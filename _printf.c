@@ -13,11 +13,11 @@ int _printf(const char *format, ...)
 	int count = 0;
 
 	va_start(args, format);
-	while (format)
+	while (*format)
 	{
 		if (*format != '%')
 		{
-		count += regular_character(*format);
+		count += write(1, format, 1);
 	}
 		else
 		{
