@@ -18,12 +18,13 @@ int _string(va_list *args)
 	{
 		str = "(null)";
 	}
+
 	int len = strlen(str);
 
 	for (int i = 0; i < len; i++)
 	{
-		write(1, str + i, 1);
+		write(1, str + 1, 1);
 		count++;
 	}
-	return(count);
+	return (count);
 }
