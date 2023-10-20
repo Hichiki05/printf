@@ -9,16 +9,16 @@
  */
 int main(void)
 {
-	int len, len2;
+    int len, len2;
 
-	len = _printf("Let's print a simple sentence.\n");
-	len2 = printf("Let's print a simple sentence.\n");
-	fflush(stdout);
-	if (len != len2)
-	{
-		printf("Lengths differ.\n");
-		fflush(stdout);
-		return (1);
-	}
-	return (0);
+    len = _printf("%c", 'S');
+    len2 = printf("%c", 'S');
+    fflush(stdout);
+    if (len != len2)
+    {
+        printf("Lengths differ.\n");
+        fflush(stdout);
+        return (1);
+    }
+    return (0);
 }

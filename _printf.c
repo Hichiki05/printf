@@ -17,12 +17,20 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
+<<<<<<< HEAD
 		{ count += write(1, format, 1); }
+=======
+		count += write(1, format, 1);
+>>>>>>> 345cdd1f66aaa0c297425fe776af58b848a5c31f
 		else
 		{ format++;
 			if (*format == '\0')
 			{ va_end(args);
+<<<<<<< HEAD
 			return (-1); }
+=======
+			return (-1);  }
+>>>>>>> 345cdd1f66aaa0c297425fe776af58b848a5c31f
 		switch (*format)
 		{ case 'c':
 				count += _char(&args);
@@ -40,7 +48,12 @@ int _printf(const char *format, ...)
 			default:
 				write(1, "%", 1);
 				write(1, format, 1);
+<<<<<<< HEAD
 				count += 2; }
+=======
+				count += 2;
+		}
+>>>>>>> 345cdd1f66aaa0c297425fe776af58b848a5c31f
 		}
 		format++; }
 	va_end(args);
